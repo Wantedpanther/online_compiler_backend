@@ -14,14 +14,21 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   const code = req.body.code;
-
-  exec(`g++ -o compiled_code -xc++ -`, (error, stdout, stderr) => {
+  const compileCommand = `g++ -x c++ -o output - <<EOF\n${code}\nEOF`;
+//   exec(`g++ -o compiled_code -xc++ -`, (error, stdout, stderr) => {
+//     if (error) {
+//       res.send(stderr);
+//     } else {
+//       res.send(stdout);
+//     }
+//   }).stdin.end(code);
+  exec(compileCommand, (error, stdout, stderr) => {
     if (error) {
+    //   console.error(`Compilation failed: ${error}`);
       res.send(stderr);
-    } else {
-      res.send(stdout);
     }
-  }).stdin.end(code);
+    res.send(stdout);
+  });
 });
 app.get('/list', async (req, res) => {
     const body = []
