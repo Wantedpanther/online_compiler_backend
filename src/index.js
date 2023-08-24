@@ -7,7 +7,7 @@ const corsOpts = {
     allowedHeaders: ["Content-Type"],
 };
 const app = express();
-const port = 5000;
+const port = 8000;
 app.use(cors(corsOpts));
 
 app.use(express.json());
