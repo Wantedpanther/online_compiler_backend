@@ -14,6 +14,7 @@ app.use(express.json());
 
 app.post('/', (req, res) => {
   const code = req.body.code;
+  console.log("success1");
   const compileCommand = `g++ -x c++ -o output - <<EOF\n${code}\nEOF`;
 //   exec(`g++ -o compiled_code -xc++ -`, (error, stdout, stderr) => {
 //     if (error) {
