@@ -29,7 +29,7 @@ app.post('/', (req, res) => {
         console.log(error);
       res.send(stderr);
     }
-    console.log(stdout);
+    console.log(compileCommand);
     res.send(stdout);
     // res.send({output:"jasdkfjalksdjflakjsd"})
   });
