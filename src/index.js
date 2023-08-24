@@ -23,11 +23,12 @@ app.post('/', (req, res) => {
 //     }
 //   }).stdin.end(code);
   exec(compileCommand, (error, stdout, stderr) => {
-    if (error) {
-    //   console.error(`Compilation failed: ${error}`);
-      res.send(stderr);
-    }
-    res.send(stdout);
+    // if (error) {
+    // //   console.error(`Compilation failed: ${error}`);
+    //   res.send(stderr);
+    // }
+    // res.send(stdout);
+    res.send({output:"jasdkfjalksdjflakjsd"})
   });
 });
 app.get('/list', async (req, res) => {
