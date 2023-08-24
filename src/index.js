@@ -25,8 +25,10 @@ app.post('/', (req, res) => {
   exec(compileCommand, (error, stdout, stderr) => {
     if (error) {
     //   console.error(`Compilation failed: ${error}`);
+        console.log(error);
       res.send(stderr);
     }
+    console.log("success");
     res.send(stdout);
     // res.send({output:"jasdkfjalksdjflakjsd"})
   });
