@@ -20,7 +20,7 @@ app.post('/', (req, res) => {
     if (error) {
       res.send(stderr);
     } else {
-        res.send(stdout);
+        console.log(stdout);
       res.send(stdout);
     }
   }).stdin.end(code);
