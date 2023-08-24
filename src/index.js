@@ -16,23 +16,24 @@ app.post('/', (req, res) => {
   const code = req.body.code;
   console.log("success1");
   const compileCommand = `g++ -x c++ -o output - <<EOF\n${code}\nEOF`;
-//   exec(`g++ -o compiled_code -xc++ -`, (error, stdout, stderr) => {
-//     if (error) {
-//       res.send(stderr);
-//     } else {
-//       res.send(stdout);
-//     }
-//   }).stdin.end(code);
-  exec(compileCommand, (error, stdout, stderr) => {
+  exec(`g++ -o compiled_code -xc++ -`, (error, stdout, stderr) => {
     if (error) {
-    //   console.error(`Compilation failed: ${error}`);
-        console.log(error);
       res.send(stderr);
+    } else {
+        res.send(stdout);
+      res.send(stdout);
     }
-    console.log(compileCommand);
-    res.send(stdout);
-    // res.send({output:"jasdkfjalksdjflakjsd"})
-  });
+  }).stdin.end(code);
+//   exec(compileCommand, (error, stdout, stderr) => {
+//     if (error) {
+//     //   console.error(`Compilation failed: ${error}`);
+//         console.log(error);
+//       res.send(stderr);
+//     }
+//     console.log(compileCommand);
+//     res.send(stdout);
+//     // res.send({output:"jasdkfjalksdjflakjsd"})
+//   });
 });
 app.get('/list', async (req, res) => {
     const body = []
