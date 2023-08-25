@@ -4,6 +4,7 @@ const {supportedLanguages} = require("./run-code/instructions");
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
+const client_app = express();
 const port = process.env.PORT || 8000;
 const cors = require("cors");
 const {info} = require("./run-code/info");
@@ -45,3 +46,10 @@ app.get('/list', async (req, res) => {
 })
 
 app.listen(port);
+
+client_app.use(express.static(path.join(__dirname, "build")));
+client_app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
+});
+
+client_app.listen(5000);
