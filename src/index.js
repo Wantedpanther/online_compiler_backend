@@ -11,7 +11,12 @@ const {info} = require("./run-code/info");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+const corsOpts = {
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  };
+app.use(cors(corsOpts));
 
 const sendResponse = (res, statusCode, body) => {
     const timeStamp = Date.now()
